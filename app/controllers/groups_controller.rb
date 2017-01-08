@@ -11,6 +11,9 @@ class GroupsController < ApplicationController
 
       redirect_to groups_path
   end
+  def show
+    @group = Group.find(parmas[:id])
+  end
 
   private
 
