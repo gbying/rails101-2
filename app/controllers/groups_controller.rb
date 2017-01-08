@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.user = current_user
     if @group.save
+      current_user.join!(@group)
 
       redirect_to groups_path
     else
@@ -51,12 +52,14 @@ class GroupsController < ApplicationController
   def quit
     @group = Group.find(params[:id])
 
-    if current_user.is_member_of?(group)
+    if current_user.is_member_of?(@group)
       current_user.quit!(@group)
       flash[:alert] = "你已退出本讨论组！"
     else
       flash[:warning] = "你不是本组成员！无需退出！"
     end
+    redirect_to group_path(@group)
+  end
 
   private
 
