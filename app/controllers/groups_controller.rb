@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user! , only: [:new :edit :create :destroy :update]
+  before_action :authenticate_user! , only: [:new, :edit, :create, :destroy, :update]
   def index
     @groups = Group.all
   end
