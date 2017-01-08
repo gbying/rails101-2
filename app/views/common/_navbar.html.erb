@@ -20,6 +20,7 @@
             </a>
           <ul class="dropdown-menu">
             <li><%= link_to("我的小组", account_groups_path) %></li>
+            <li><%= link_to("我的评论", account_posts_path) %></li>
             <li class="divider"></li>
             <li> <%= link_to("logout",destroy_user_session_path, method: :delete) %></li>
           </ul>
